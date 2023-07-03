@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #222;
+    padding: 1.2em 0;
+}
+
+#navbar-nav {
+    justify-content: flex-end;
+}
+
+.container-90 {
+    width: 90%;
+}
+
+.nav-link + .nav-link {
+    margin-left: 2em;
+}
+
+@media (width < 768px) {
+    .nav-link + .nav-link {
+        margin-left: 0;
+    }
+}

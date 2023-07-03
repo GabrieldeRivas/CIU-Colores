@@ -1,0 +1,139 @@
+.title {
+    font-size: clamp(3rem, 6vw, 4rem);
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    margin: 1em 0 .5em;
+}
+
+.info {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2em;
+    padding: 0 1em;
+}
+
+.color-area {
+    aspect-ratio: 1/1;
+    transition: all 1000ms;
+    box-shadow: 4px 4px 11px 4px rgba(166,160,160,0.75);
+    -webkit-box-shadow: 4px 4px 11px 4px rgba(166,160,160,0.75);
+    -moz-box-shadow: 4px 4px 11px 4px rgba(166,160,160,0.75);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#area-a {
+    background-color: rgb(230, 0, 0);
+}
+
+#area-b {
+    background-color: rgb(0, 0, 230);
+}
+
+#area-c {
+    background-color: rgb(115, 0, 115);
+}
+
+.row-letters {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: lighter;
+    margin-bottom: .3em;
+}
+
+.col-operators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: lighter;
+    font-size: 4rem;
+}
+
+.mixer-btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+.rgb-value {
+  color: white;
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 1);
+  opacity: 0;
+  transition: all 600ms;
+}
+
+.color-area:hover .rgb-value {
+    opacity: 1;
+    padding-bottom: 1em;
+}
+
+@media (width < 768px) {
+    .row-letters {
+        display: none;
+    }
+
+    .color-area {
+        width: 30%;
+        min-width: 10rem;
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .invisible-row {
+        display: none;
+    }
+
+    .mixer-btn {
+        font-size: .9rem;
+        width: 7rem;
+        position: relative;
+        bottom: 256px;
+    }
+
+    #btn-1 {
+        margin-right: 6.3em;
+    }
+
+    #btn-2 {
+        margin-left: 6.3em;
+    }
+
+    .info {
+        font-size: 1.25rem;
+    }
+
+    .rgb-value {
+        opacity: 1;
+        font-size: .82rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .color-area:hover .rgb-value {
+        padding-bottom: 0em;
+    }
+}
+
+@media (width < 576px) {
+    #btn-1 { 
+        margin: 0 auto;
+        bottom: 564px;
+    }
+
+    #btn-2 {
+        margin: 0 auto;
+        bottom: 311px;
+    }
+
+    .col-operators {
+        margin-top: .5em;
+    }
+
+    .info {
+        font-size: 1rem;
+    }
+}
