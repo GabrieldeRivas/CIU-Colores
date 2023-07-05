@@ -171,6 +171,7 @@ body {
     width: 50%;
     margin: 0 auto;
     margin-top: 3em;
+    overflow-y: scroll;
 }
 
 

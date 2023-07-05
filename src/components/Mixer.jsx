@@ -131,8 +131,26 @@ const Mixer = () => {
             console.log(result.result)
             const paletaAGuardar = result.result
             editarPaleta(paletaAGuardar);
-            localStorage.setItem('paleta', JSON.stringify(paleta))
+            //localStorage.setItem('paleta', JSON.stringify(paleta))
         })
+    }
+
+    const agregarAFavoritas = () => {
+        if(localStorage.getItem('paleta') == null) {
+            localStorage.setItem('paleta', JSON.stringify(paleta))
+        } else {
+            localStorage.setItem('paleta', localStorage.getItem('paleta') + JSON.stringify(paleta))
+        }
+        recargarPaletasFavoritas()
+    }
+
+    const recargarPaletasFavoritas = () => {
+        const favoritas = document.getElementById("favs")
+        favoritas.innerHTML = `
+                Your favorite palettes: 
+                <br>
+                ${localStorage.getItem("paleta") && localStorage.getItem("paleta") ? localStorage.getItem("paleta") : ""}
+            `
     }
 
     useEffect(() => {
@@ -140,6 +158,7 @@ const Mixer = () => {
             escribirColorFondoEnParrafo(elemento);
         })
         generarPaleta()
+        recargarPaletasFavoritas()
     }, [])
 
     return (
@@ -206,7 +225,7 @@ const Mixer = () => {
                 </div>
                 <div id="botones">
                     <Button variant="outline-dark" id='btn-palette' onClick={() => generarPaleta()}>New palette</Button>
-                    <Button variant="outline-dark" id='btn-love' onClick={() => generarPaleta()}>♡</Button>
+                    <Button variant="outline-dark" id='btn-love' onClick={() => agregarAFavoritas()}>♡</Button>
                 </div>
                 <div id="favs">
                     <h3 id=''>Your favorite palettes</h3>
