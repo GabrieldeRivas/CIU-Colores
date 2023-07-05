@@ -1,3 +1,7 @@
+:root {
+    color-scheme: dark;
+}
+
 body {
     background-color:#111;
     color: white;
@@ -79,7 +83,7 @@ body {
     border: 1px solid white;
 }
 
-.mixer-btn:hover, #btn-palette:hover {
+.mixer-btn:hover, #btn-palette:hover, #borrar:hover {
     background-color: #777;
 }
 
@@ -168,10 +172,31 @@ body {
 #favs {
     height: 18rem;
     border: 3px solid rgba(165, 12, 12, 0.734);
-    width: 50%;
+    width: calc(3rem + 25%);
     margin: 0 auto;
-    margin-top: 3em;
-    overflow-y: scroll;
+    overflow-y: auto;
+    text-align: center;
+    padding: 1em 0;
+}
+
+#title-favs {
+    text-align: center;
+    margin-top: 2em;
+}
+
+#heart {
+    color: rgba(165, 12, 12, 0.734);
+    font-weight: bold;
+}
+
+#borrar {
+    display: block;
+    margin: 0 auto;
+    background-color: #222;
+    color: white;
+    transition: background-color 300ms;
+    border: 1px solid white;
+    margin-top: 1em;
 }
 
 
@@ -244,6 +269,10 @@ body {
 
     #title-palette {
         margin-top: 0px;
+    }
+
+    #favs {
+        width: calc(2rem + 50%);
     }
 }
 
