@@ -6,22 +6,17 @@ import '../css/header.css';
 const Header = () => {
     return (
         <Fragment>
-            <Navbar expand="md" variant="dark">
+            <Navbar expand="md" variant="dark" fixed="top">
                 <Container fluid className='container-90'>
-                    <Navbar.Brand href="#home">
-                        <img
-                        src="ruta-del-logo.png"
-                        className="d-inline-block align-top"
-                        alt="Logo"
-                        />
+                    <Navbar.Brand href="#">
+                        <p className='logo'>Chroma<span className="logo-red">Mi</span><span className="logo-violet">x</span><span className='logo-blue'>er</span></p>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbar-nav" />
                     <Navbar.Collapse id="navbar-nav">
                         <Nav className="ml-auto">
-                        <Nav.Link href="#link1">Enlace 1</Nav.Link>
-                        <Nav.Link href="#link2">Enlace 2</Nav.Link>
-                        <Nav.Link href="#link3">Enlace 3</Nav.Link>
-                        <Nav.Link href="#link4">Enlace 4</Nav.Link>
+                        <Nav.Link href="#ancla-random">Mixer</Nav.Link>
+                        <Nav.Link href="#ancla-palette">Palette</Nav.Link>
+                        <Nav.Link href="#ancla-about">About</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>        
                 </Container>
