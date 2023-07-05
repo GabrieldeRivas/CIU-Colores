@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CIU-Colores/static/css/main.3e80e0b4.css",
+    "main.js": "/CIU-Colores/static/js/main.b39e8011.js",
+    "static/js/787.424964f5.chunk.js": "/CIU-Colores/static/js/787.424964f5.chunk.js",
+    "index.html": "/CIU-Colores/index.html",
+    "main.3e80e0b4.css.map": "/CIU-Colores/static/css/main.3e80e0b4.css.map",
+    "main.b39e8011.js.map": "/CIU-Colores/static/js/main.b39e8011.js.map",
+    "787.424964f5.chunk.js.map": "/CIU-Colores/static/js/787.424964f5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e80e0b4.css",
+    "static/js/main.b39e8011.js"
+  ]
+}
