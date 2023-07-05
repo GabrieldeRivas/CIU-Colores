@@ -128,7 +128,6 @@ const Mixer = () => {
             document.getElementById("paleta-3").style.background = `rgb(${result.result[2]})`;
             document.getElementById("paleta-4").style.background = `rgb(${result.result[3]})`;
             document.getElementById("paleta-5").style.background = `rgb(${result.result[4]})`;
-            console.log(result.result)
             const paletaAGuardar = result.result
             editarPaleta(paletaAGuardar);
             //localStorage.setItem('paleta', JSON.stringify(paleta))
