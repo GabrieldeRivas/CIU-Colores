@@ -9,12 +9,6 @@ const Mixer = () => {
 
     const [paleta, editarPaleta] = useState([]);
 
-    const getRandomInt = (min, max) => {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); 
-    };
-
     const combinarColores = (id_area, id_area_a, id_area_b) => {
         setTimeout(() => {
             var area1 = document.getElementById(id_area_a);
@@ -73,26 +67,16 @@ const Mixer = () => {
     }
 
     const generarPaleta = async () => {
-        let paletas = document.querySelector("#paletas");
         let colores = document.querySelector("#colores-rgb");
+        let paleta1 = document.getElementById("paleta-1");
+        let paleta2 = document.getElementById("paleta-2");
+        let paleta3 = document.getElementById("paleta-3");
+        let paleta4 = document.getElementById("paleta-4");
+        let paleta5 = document.getElementById("paleta-5");
         const url = 'https://x-colors.yurace.pro/api/random?number=5';
         await fetch(url)
         .then(response => response.json())
         .then(result => {
-            paletas.innerHTML = paletas.innerHTML +
-            `
-            <div className="color-area" id="paleta-1">
-            </div>
-            <div className="color-area" id="paleta-2">
-            </div>
-            <div className="color-area" id="paleta-3">
-            </div>
-            <div className="color-area" id="paleta-4">
-            </div>
-            <div className="color-area" id="paleta-5">
-            </div>
-            `;
-
             colores.innerHTML = 
             `
             <ul class="lista-mobile">
@@ -103,14 +87,14 @@ const Mixer = () => {
                 <li>${result[4].rgb}</li>
             </ul>
             `;
-            document.getElementById("paleta-1").style.background = `${result[0].rgb}`;
-            document.getElementById("paleta-2").style.background = `${result[1].rgb}`;
-            document.getElementById("paleta-3").style.background = `${result[2].rgb}`;
-            document.getElementById("paleta-4").style.background = `${result[3].rgb}`;
-            document.getElementById("paleta-5").style.background = `${result[4].rgb}`;
+            paleta1.style.background = `${result[0].rgb}`;
+            paleta2.style.background = `${result[1].rgb}`;
+            paleta3.style.background = `${result[2].rgb}`;
+            paleta4.style.background = `${result[3].rgb}`;
+            paleta5.style.background = `${result[4].rgb}`;  
             const paletaAGuardar = [result[0].rgb.slice(4, -1), result[1].rgb.slice(4, -1), result[2].rgb.slice(4, -1), result[3].rgb.slice(4, -1), result[4].rgb.slice(4, -1)]
             editarPaleta(paletaAGuardar);
-        })
+        })  
     }
 
     const agregarAFavoritas = () => {
@@ -129,14 +113,16 @@ const Mixer = () => {
 
     const recargarPaletasFavoritas = () => {
         const favoritas = document.getElementById("favs")
-        const paletasGuardadas = localStorage.getItem("paleta")
-        let paletasAMostrar = ``;
-        for(let elem of paletasGuardadas.split("[")) {
-            paletasAMostrar = `${elem.slice(0, elem.length-1)}<br><br>${paletasAMostrar}<br><br>`
-        }
-        favoritas.innerHTML = `
+        if(localStorage.getItem('paleta')) {
+            const paletasGuardadas = localStorage.getItem('paleta')
+            let paletasAMostrar = ``
+            for(let elem of paletasGuardadas.split("[")) {
+                paletasAMostrar = `${elem.slice(0, elem.length-1)}<br><br>${paletasAMostrar}`
+            }
+            favoritas.innerHTML = `
             ${paletasAMostrar}
-        `
+            `
+        }        
     }
 
     useEffect(() => {
@@ -204,7 +190,18 @@ const Mixer = () => {
                 <h3 className='title title-random' id="title-palette">Random Palette</h3>
                 <p className='info info-palette'>A dynamic color palette generator that presents you with five captivating and randomly selected hues.</p>
                 <div id="div-paletas">
-                    <div id="paletas"></div>
+                    <div id="paletas">
+                        <div id="paleta-1">
+                        </div>
+                        <div id="paleta-2">
+                        </div>
+                        <div id="paleta-3">
+                        </div>
+                        <div id="paleta-4">
+                        </div>
+                        <div id="paleta-5">
+                        </div>
+                    </div>
                     <div id="colores-rgb">
 
                     </div>
