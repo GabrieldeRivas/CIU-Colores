@@ -122,7 +122,11 @@ const Mixer = () => {
             favoritas.innerHTML = `
             ${paletasAMostrar}
             `
-        }        
+        } else {
+            favoritas.innerHTML = `
+                
+            `
+        }
     }
 
     useEffect(() => {
