@@ -40,23 +40,11 @@ const Mixer = () => {
     }
 
     const recibirColor = async(id_area, id_area2, id_area_mix) => {
-        const url = 'http://colormind.io/api/';
-        const data = {
-        model: 'default',
-        input: ['N', 'N', 'N', 'N', 'N']
-        };
-
-        fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data)
-        })
+        const url = 'https://x-colors.yurace.pro/api/random';
+        fetch(url)
         .then(response => response.json())
         .then(result => {
-            const random = getRandomInt(0, 5);
-            const red = (result.result[random][0]);
-            const green = (result.result[random][1]);
-            const blue = (result.result[random][2]);
-            var colorRGB = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+            const colorRGB = result.rgb
             document.getElementById(id_area).style.background = colorRGB;
             setTimeout(() => {
                 combinarColores(id_area_mix, id_area, id_area2);
@@ -87,16 +75,8 @@ const Mixer = () => {
     const generarPaleta = async () => {
         let paletas = document.querySelector("#paletas");
         let colores = document.querySelector("#colores-rgb");
-        const url = 'http://colormind.io/api/';
-        const data = {
-        model: 'default',
-        input: ['N', 'N', 'N', 'N', 'N']
-        };
-
-        await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data)
-        })
+        const url = 'https://x-colors.yurace.pro/api/random?number=5';
+        await fetch(url)
         .then(response => response.json())
         .then(result => {
             paletas.innerHTML = paletas.innerHTML +
@@ -116,21 +96,20 @@ const Mixer = () => {
             colores.innerHTML = 
             `
             <ul class="lista-mobile">
-                <li>rgb(${result.result[0]})</li>
-                <li>rgb(${result.result[1]})</li>
-                <li>rgb(${result.result[2]})</li>
-                <li>rgb(${result.result[3]})</li>
-                <li>rgb(${result.result[4]})</li>
+                <li>${result[0].rgb}</li>
+                <li>${result[1].rgb}</li>
+                <li>${result[2].rgb}</li>
+                <li>${result[3].rgb}</li>
+                <li>${result[4].rgb}</li>
             </ul>
             `;
-            document.getElementById("paleta-1").style.background = `rgb(${result.result[0]})`;
-            document.getElementById("paleta-2").style.background = `rgb(${result.result[1]})`;
-            document.getElementById("paleta-3").style.background = `rgb(${result.result[2]})`;
-            document.getElementById("paleta-4").style.background = `rgb(${result.result[3]})`;
-            document.getElementById("paleta-5").style.background = `rgb(${result.result[4]})`;
-            const paletaAGuardar = result.result
+            document.getElementById("paleta-1").style.background = `${result[0].rgb}`;
+            document.getElementById("paleta-2").style.background = `${result[1].rgb}`;
+            document.getElementById("paleta-3").style.background = `${result[2].rgb}`;
+            document.getElementById("paleta-4").style.background = `${result[3].rgb}`;
+            document.getElementById("paleta-5").style.background = `${result[4].rgb}`;
+            const paletaAGuardar = [result[0].rgb.slice(4, -1), result[1].rgb.slice(4, -1), result[2].rgb.slice(4, -1), result[3].rgb.slice(4, -1), result[4].rgb.slice(4, -1)]
             editarPaleta(paletaAGuardar);
-            //localStorage.setItem('paleta', JSON.stringify(paleta))
         })
     }
 
@@ -153,7 +132,7 @@ const Mixer = () => {
         const paletasGuardadas = localStorage.getItem("paleta")
         let paletasAMostrar = ``;
         for(let elem of paletasGuardadas.split("[")) {
-            paletasAMostrar = `${elem.slice(0, elem.length-2)}<br>${paletasAMostrar}`
+            paletasAMostrar = `${elem.slice(0, elem.length-1)}<br><br>${paletasAMostrar}<br><br>`
         }
         favoritas.innerHTML = `
             ${paletasAMostrar}
